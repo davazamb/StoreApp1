@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Models.Department>
+
+@{
+    ViewBag.Title = "Departments";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@*<div class="page-title">
+        <span class="title">Datatable</span>
+        <div class="description">with jquery Datatable for display data with most usage functional. such as search, ajax loading, pagination, etc.</div>
+    </div>*@
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+        <div class="card">
+            <div class="card-header">
+                <h3>@ViewBag.Message</h3>
+                <div class="card-title">
+                    <div class="title"><h2>Index</h2></div>
+                    <!-- Button trigger modal -->                    
+                    </div>
+                    <div class="card-title text-center">
+                        <br />
+                        <button type="button" class="btn btn-primary btn-info" data-toggle="modal" data-target="#modalInfo">
+                            Agregar Nuevo
+                        </button>
+                    </div>
+            </div>
+            <div class="card-body">
+                <table class="datatable table table-striped" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>Botones</th>
+                        </tr>
+                    </thead>
+                    @*<tfoot>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </tfoot>*@
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Departments", new { Id=item.DepartmentId})" data-toggle="modal" data-target="#modalWarning">@Html.DisplayFor(modelItem => item.Name)</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="@Url.Action("Delete" , "Departments",  new { id = item.DepartmentId })" class="btn btn-danger" data-toggle="modal" data-target="#modalDanger"><i class="fa fa-trash-o fa-lg"></i> Delete</a>                                    
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Create -->
+
+            @Html.Partial("~/Areas/Admin/Views/Departments/Create.cshtml", new Models.Department())
+
+<!-- Modal Edit -->
+<div class="modal fade modal-warning" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @Html.Partial("~/Areas/Admin/Views/Departments/Edit.cshtml", new Models.Department())
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-danger" id="modalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @Html.Partial("~/Areas/Admin/Views/Departments/Delete.cshtml", new Models.Department())
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

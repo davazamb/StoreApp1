@@ -1,0 +1,48 @@
+﻿@model Models.Department
+
+
+<div class="modal fade modal-info" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @using (Html.BeginForm("Create", "Departments", FormMethod.Post))
+            {
+
+                <div class="modal-header">
+                    <a href="@Url.Action("Index" , "Departments")" class="close"><i class="fa fa-times"></i></a>
+                    <h4 class="modal-title" id="myModalLabel">Create New</h4>
+                </div>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger", @required = "true", @oninvalid = "setCustomValidity('Debe introducir un nombre')", @oninput = "setCustomValidity('')" } )
+                <div class="modal-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @required = "true", @oninvalid = "setCustomValidity('Debe introducir un nombre')", @oninput = "setCustomValidity('')" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="modal-footer">
+                    <a href="@Url.Action("Index" , "Departments")" class="btn btn-default"><i class="fa fa-times"></i> Close</a>
+                    <button type="submit" class="btn btn-success" data-reset="true" data-ajax="true">
+                        <i class="fa fa-floppy-o"></i> Save
+                    </button>
+                    @*<a class="btn btn-success" href="#" type="submit" data-reset="true" data-ajax="true" value="Agregar">
+                            <i class="fa fa-hdd-o"></i> Delete
+                        </a>*@
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function CerrarEdit() {
+            $("#modalWarning").modal('hide');
+        }
+    </script>
+}

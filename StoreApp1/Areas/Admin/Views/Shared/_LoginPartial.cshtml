@@ -3,20 +3,59 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
-    </ul>
-    }
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+        <ul class="nav navbar-nav navbar-right">
+            @*<li>
+                @if (Session["Logo"] != null)
+                {
+                    <img src="@Url.Content(Session["Logo"].ToString())" alt="Image" style="width:50px;height:50px;max-width:100%;height:auto;padding-top:5px" />
+                }
+            </li>*@
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    @{
+                        var name = User.Identity.Name;
+                        <text>Hola, @name !</text>
+                    }
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+                </ul>
+            </li>
+        </ul>
+                            }
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                @*<li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+                                <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            </ul>
+                        }
+
+<!--Themes-->
+
+
+
+@*<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+<ul class="dropdown-menu animated fadeInDown">
+    <li class="profile-img">
+        <img src="../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+    </li>
+    <li>
+        <div class="profile-info">
+            <h4 class="username">Emily Hart</h4>
+            <p>emily_hart@email.com</p>
+            <div class="btn-group margin-bottom-2x" role="group">
+                <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
+                <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+            </div>
+        </div>
+    </li>
+</ul>*@
+
+

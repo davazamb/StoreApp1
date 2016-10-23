@@ -179,18 +179,50 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DepartmentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Assets\css\style.css" />
+    <Content Include="Areas\Admin\Assets\css\themes.css" />
+    <Content Include="Areas\Admin\Assets\css\themes\flat-blue.css" />
+    <Content Include="Areas\Admin\Assets\css\themes\flat-green.css" />
+    <Content Include="Areas\Admin\Assets\js\alert.js" />
+    <Content Include="Areas\Admin\Assets\js\app.js" />
+    <Content Include="Areas\Admin\Assets\js\button.js" />
+    <Content Include="Areas\Admin\Assets\js\card.js" />
+    <Content Include="Areas\Admin\Assets\js\chartjs.js" />
+    <Content Include="Areas\Admin\Assets\js\index.js" />
+    <Content Include="Areas\Admin\Assets\js\list.js" />
+    <Content Include="Areas\Admin\Assets\js\modal.js" />
+    <Content Include="Areas\Admin\Assets\js\theming.js" />
+    <Content Include="Areas\Admin\Assets\lib\css\animate.min.css" />
+    <Content Include="Areas\Admin\Assets\lib\css\bootstrap-switch.min.css" />
+    <Content Include="Areas\Admin\Assets\lib\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Assets\lib\css\checkbox3.min.css" />
+    <Content Include="Areas\Admin\Assets\lib\css\dataTables.bootstrap.css" />
+    <Content Include="Areas\Admin\Assets\lib\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\Assets\lib\css\jquery.dataTables.min.css" />
+    <Content Include="Areas\Admin\Assets\lib\css\select2.min.css" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\Admin\Assets\lib\js\ace\ace.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\ace\mode-html.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\ace\theme-github.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\bootstrap-switch.min.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\Chart.min.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\dataTables.bootstrap.min.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\jquery.matchHeight-min.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\jquery.min.js" />
+    <Content Include="Areas\Admin\Assets\lib\js\select2.full.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -200,6 +232,22 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Departments\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Departments\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Departments\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Departments\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Departments\Index.cshtml" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\Admin\Assets\lib\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Admin\Views\Shared\_MenuDashboard.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Themes.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -260,6 +308,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{e22627bc-fb4c-4052-88ba-5185831f2def}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

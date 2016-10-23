@@ -1,0 +1,41 @@
+﻿@model Models.Department
+
+
+
+@using (Html.BeginForm())
+{
+    
+    <div class="modal-header">
+        <a href="@Url.Action("Index" , "Departments")" class="close"><i class="fa fa-times"></i></a>
+        <h4 class="modal-title" id="myModalLabel">Editar - @Model.Name</h4>
+    </div>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.DepartmentId)
+    <div class="modal-body">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @required = "true", @oninvalid = "setCustomValidity('Debe introducir un nombre')", @oninput = "setCustomValidity('')" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+                <br />
+                <div class="modal-footer">
+                    <a href="@Url.Action("Index" , "Departments")" class="btn btn-default"><i class="fa fa-times"></i> Close</a>
+                    <button type="submit" class="btn btn-warning" data-reset="true" data-ajax="true">
+                        <i class="fa fa-floppy-o"></i> Save
+                    </button>
+                </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        function CerrarCreate() {
+            $("#modalInfo").modal('hide');
+        }
+</script>
+}

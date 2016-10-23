@@ -1,45 +1,150 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title - My Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <!-- CSS Libs -->
+    <link href="~/Areas/Admin/Assets/lib/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/lib/css/bootstrap-switch.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/lib/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/lib/css/checkbox3.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/lib/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/lib/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/lib/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/lib/css/animate.min.css" rel="stylesheet" />
+
+
+    <!-- CSS App -->
+    <link href="~/Areas/Admin/Assets/css/themes/flat-blue.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/css/style.css" rel="stylesheet" />
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+
+<body class="flat-blue">
+    <div class="app-container">
+        <div class="row content-container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-expand-toggle">
+                            <i class="fa fa-bars icon"></i>
+                        </button>
+                        <ol class="breadcrumb navbar-breadcrumb">
+                            <li class="active">@ViewBag.Title</li>
+                        </ol>
+
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-th icon"></i>
+                        </button>
+                    </div>
+                    <div class="nav navbar-fixed-top">
+                        <div class="col-md-offset-2 col-md-8">
+                            <marquee style="resize:20px">
+                                Proximamente la gran tienda ECommerce!...
+                            </marquee>
+                        </div>
+                    </div>
+                    @*<ul class="nav navbar-nav navbar-right">
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-times icon"></i>
+                        </button>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">0</span>
+                                </li>
+                                <li class="message">
+                                    No new notification
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown danger">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
+                            <ul class="dropdown-menu danger  animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">4</span>
+                                </li>
+                                <li>
+                                    <ul class="list-group notifications">
+                                        <a href="#">
+                                            <li class="list-group-item">
+                                                <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
+                                            </li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="list-group-item">
+                                                <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                            </li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="list-group-item">
+                                                <span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
+                                            </li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="list-group-item message">
+                                                view all
+                                            </li>
+                                        </a>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown profile">*@
+                            @Html.Partial("_LoginPartial")
+                        @*</li>
+                    </ul>*@
+                </div>
+            </nav>
+            @Html.Partial("_MenuDashboard")
+            <!-- Main Content -->
+            <div class="container-fluid">
+                <div class="side-body padding-top">
+                    @RenderBody()
+
+                </div>
+
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+
+
+        <footer class="app-footer">
+            <div class="wrapper">
+                <p>&copy; @DateTime.Now.Year - E-Commerce - TecnicomputoZ</p>
+            </div>
         </footer>
     </div>
+    <!-- Javascript Libs -->
+    <script src="~/Areas/Admin/Assets/lib/js/jquery.min.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/Chart.min.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/bootstrap-switch.min.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/jquery.matchHeight-min.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/select2.full.min.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/ace/ace.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/ace/mode-html.js"></script>
+    <script src="~/Areas/Admin/Assets/lib/js/ace/theme-github.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
+
+    <!-- Javascript -->
+    <script src="~/Areas/Admin/Assets/js/app.js"></script>
+    <script src="~/Areas/Admin/Assets/js/index.js"></script>
+    <script src="~/Areas/Admin/Assets/js/modal.js"></script>
+
     @RenderSection("scripts", required: false)
+
+
 </body>
+
 </html>

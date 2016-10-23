@@ -26,5 +26,11 @@ namespace StoreApp1.Areas.Admin.Controllers
 
             return View();
         }
+        public ActionResult Themes()
+        {
+            ViewBag.Message = "Your Themes page.";
+
+            return View();
+        }
     }
 }

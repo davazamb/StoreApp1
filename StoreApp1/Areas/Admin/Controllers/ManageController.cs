@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using StoreApp1.Models;
+using Models;
 
 namespace StoreApp1.Areas.Admin.Controllers
 {
